@@ -1,4 +1,3 @@
-from agent import Agent
 from threading import Thread
 from config import agents
 

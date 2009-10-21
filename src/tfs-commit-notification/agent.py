@@ -5,7 +5,6 @@ from datetime import datetime
 import re
 import threading
 import time
-import sys
 
 
 PATTERN = re.compile(r"^(\d+)\s+([\w\.]+)\s+(\d{1,2}\/\d{1,2}\/\d{4})(.+)$")
@@ -85,6 +84,8 @@ class Agent(threading.Thread):
 
     def __init__(self, tfs_cmd, path, stdout=STDOUT, interval_policy=IntervalPolicy(), notification=None):
         threading.Thread.__init__(self)
+        self.setDaemon(True)
+        
         self.tfs = tfs_cmd
         self.path = path
         self.interval_policy = interval_policy
